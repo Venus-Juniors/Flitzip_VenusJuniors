@@ -1,0 +1,51 @@
+module minmax #( 
+        parameter NUM_OF_BITS = 128,
+        parameter CHUNK_SIZE = 8,
+        
+    ) (
+
+        input  [NUM_OF_BITS-1:0]     input_data,
+        output [CHUNK_SIZE - 1 : 0]  min,
+       output [CHUNK_SIZE - 1 : 0]  max,
+
+    );
+  
+   wire [15:0] [7:0] chuck_array; // 16 values with each 8 bits
+  
+    genvar i,j;
+    generate
+        for (i = 0; i < 16; i = i++)
+        begin
+                assign chuck_array[i] = input_data[i*CHUNK_SIZE+7:i*CHUNK_SIZE];
+        end
+    endgenerate
+            
+            
+        
+always_comb
+begin
+  max = chuck_array[0];
+  for (i = 0; i <= 16; i++)
+  begin
+    if (chuck_array[i] > max)
+    begin
+       max  = chuck_array[i];
+    end
+  end
+end
+        
+
+always_comb
+begin
+  min = chuck_array[0];
+  for (i = 0; i <= 16; i++)
+  begin
+          if (chuck_array[i] < min)
+    begin
+       min  = chuck_array[i];
+    end
+  end
+end
+
+
+endmodule  //minmax
