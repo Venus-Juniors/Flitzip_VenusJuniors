@@ -10,7 +10,7 @@ module minmax #(
 
     );
   
-   wire [15:0] [7:0] chuck_array; // 16 values with each 8 bits
+   wire [15:0] [7:0] chunck_array; // 16 values with each 8 bits
   
     genvar i,j;
     generate
