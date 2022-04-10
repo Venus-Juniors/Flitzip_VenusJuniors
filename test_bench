@@ -7,9 +7,9 @@ module general_tb #(
 
     reg clk;
     reg [127 : 0] in;
-    wire [127 : 0] comp_out;
-    wire [7 : 0] count;
-    wire [2:0] en_bits;
+    //wire [127 : 0] comp_out;
+    //wire [7 : 0] count;
+   // wire [2:0] en_bits;
     // reg [127: 0] ram [4 : 0];
 
     integer i=0;
@@ -18,14 +18,14 @@ module general_tb #(
     compressor compr(
                    .clk_in(clk),
                    .data_in(in),
-                   .data_out(comp_out),
-                   .en_out(en_bits),
-                   .is_head(1'b0)
+                   //.data_out(comp_out),
+                  // .en_out(en_bits),
+                  // .is_head(1'b0)
                );
 
     en_table en_tab(
-                 .en_bits(en_bits),
-                 .count(count) // compressed data count
+                 //.en_bits(en_bits),
+                // .count(count) // compressed data count
              );
 
     always #5
