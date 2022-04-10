@@ -16,7 +16,7 @@ module minmax #(
     generate
         for (i = 0; i < 16; i = i++)
         begin
-                assign chuck_array[i] = input_data[i*CHUNK_SIZE+7:i*CHUNK_SIZE];
+                assign chunck_array[i] = input_data[i*CHUNK_SIZE+7:i*CHUNK_SIZE];
         end
     endgenerate
             
@@ -24,12 +24,12 @@ module minmax #(
         
 always_comb
 begin
-  max = chuck_array[0];
+  max = chunck_array[0];
   for (i = 0; i <= 16; i++)
   begin
-    if (chuck_array[i] > max)
+    if (chunck_array[i] > max)
     begin
-       max  = chuck_array[i];
+       max  = chunck_array[i];
     end
   end
 end
@@ -37,12 +37,12 @@ end
 
 always_comb
 begin
-  min = chuck_array[0];
+  min = chunck_array[0];
   for (i = 0; i <= 16; i++)
   begin
-          if (chuck_array[i] < min)
+          if (chunck_array[i] < min)
     begin
-       min  = chuck_array[i];
+       min  = chunck_array[i];
     end
   end
 end
